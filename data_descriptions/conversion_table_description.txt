@@ -1,0 +1,12 @@
+-------------------------------------------------
+Conversion tables to convert raw to scaled scores
+-------------------------------------------------
+
+Every conversion table accords with one of the 3 cognitive tests from BICAMS (SDMT, BVMT-R and CVLT-II).
+It consists of the following columns:
+- scaled_score: Categorical variable, the scaled score that accords with a raw score within the following interval lower and upper bound.
+- lower bound: lower bound of the raw score to yield a certain scaled score
+- upper bound: upper bound of the raw score to yield a certain scaled score
+
+Thus: scaled_score accords with lower_bound <= raw_score <= upper_bound
+Note: Also 'equal to' belongs to the interval between the lower and upper bounds!

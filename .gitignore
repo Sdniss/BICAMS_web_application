@@ -1,8 +1,5 @@
 .DS_Store
 .idea/
 __pycache__/
-data/
-data_descriptions/
-BICAMS_script.ipynb
 /.ipynb_checkpoints/
 venv/
