@@ -63,7 +63,7 @@ General: Make sure that you have any version of python 3 installed on your compu
 
 ### Clone the repository to your local computer
 
-Please open a terminal window in a folder that will subsequently contain the GitHub repo after running following command: `git clone https://github.com/Sdniss/BICAMS_normalization`. Subsequently, type `cd BICAMS_normalization` to enter that folder in the terminal.
+Please open a terminal window in a folder that will subsequently contain the GitHub repo after running following command: `git clone https://github.com/Sdniss/BICAMS_web_application`. Subsequently, type `cd BICAMS_web_application` to enter that folder in the terminal.
 
 ### Environment set-up: 
 
