@@ -60,9 +60,30 @@ The project adopts the following file structure:
 
 ## How to run it + dependencies
 General: Make sure that you have any version of python 3 installed on your computer.
-1. First, create a virtual environment within your local repository to which you pulled the GitHub repo. Hereto you can run the following command in the terminal (make sure you are inside your local repo): `python3 -m venv BICAMS_app_venv`
-2. Second, activate the virtual environment with following command: `source BICAMS_app_venv/bin/activate`
-3. Install all dependencies by running `pip3 install -r dependencies.txt`. Among these, there is streamlit which is the python library with which the app was created. Be aware that this can take some time (couple of minutes).
-4. Run the `BICAMS_application.py` file using streamlit with the following terminal command: `streamlit run BICAMS_application.py`.
-A localhost will appear in your browser, or you can fetch it as printed in the terminal after `Local URL:`. The app is now visible in this browser tab. Once you adapt something in the app, the script will automatically run again and update the app according to your preferences. 
+
+### Clone the repository to your local computer
+
+Please open a terminal window in a folder that will subsequently contain the GitHub repo after running following command: `git clone https://github.com/Sdniss/BICAMS_normalization`. Subsequently, type `cd BICAMS_normalization` to enter that folder in the terminal.
+
+### Environment set-up: 
+
+To be able to run the eventual script, we first have to set up the environment containing the correct dependencies that the code relies on. By running `python setup_environment.py`, a virtual environment called `BICAMS_app_venv` is created within your local repository and subsequently enriched with the dependencies that are listed in `dependencies.txt`.
+
+### Preparation and running the main script
+
+To perform the calculations for z-scores and impairment per domain, complete the following steps:
+
+1. Prepare your dataframe to meet the following requirements:
+
+   - Filename: `data_to_transform.csv`
+
+   - Column headers: `age`, `sex`, `ecucation`, `sdmt`, `bvmt`, `cvlt`
+
+     Note 1: please use exactly these column names in this order
+
+     Note 2: only the 3 first columns are an absolute requirement. For the cognitive scores, please prepare your dataframe to only contain columns for which you have data. Hence, this can be a subset of the latter 3 columns, but should at least include one of them
+
+2. Upload your file to the `data` directory. It will replace the `data_to_transform.csv` that is currently there, and which is just mock data included by default
+
+3. Run the `BICAMS_application.py` file using streamlit with the following terminal command: `streamlit run BICAMS_application.py`. A localhost will appear in your browser, or you can fetch it as printed in the terminal after `Local URL:`. The app is now visible in this browser tab. Once you adapt something in the app, the script will automatically run again and update the app according to your preferences. 
 
