@@ -89,5 +89,5 @@ To perform the calculations for z-scores and impairment per domain, complete the
 
 2. Upload your file to the `data` directory. It will replace the `data_to_transform.csv` that is currently there, and which is just mock data included by default
 
-3. Run the `BICAMS_application.py` file using streamlit with the following terminal command: `streamlit run BICAMS_application.py`. A localhost will appear in your browser, or you can fetch it as printed in the terminal after `Local URL:`. The app is now visible in this browser tab. Once you adapt something in the app, the script will automatically run again and update the app according to your preferences. 
+3. Run `streamlit run BICAMS_application.py` to start the application. A localhost will appear in your browser, or you can fetch it as printed in the terminal after `Local URL:`. The app is now visible in this browser tab. Once you adapt something in the app, the script will automatically run again and update the app according to your preferences. 
 
