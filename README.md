@@ -20,74 +20,35 @@ The regression-based norms allow a raw score on any of the 3 cognitive tests sta
 - Gender
 - Educational status
 
-In short, by correcting for these 3 factors, the resulting z-score can be compared to cognitive scores without interference by them. In the following section, we explain the code that performs exactly this transformation.
+In short, by correcting for these factors, the resulting z-score can be compared to cognitive scores without interference by them. 3 important phases can be distinguished:
+
+1. Scaling of the raw scores
+2. Predicting which score should normally be obtained by the subject according to their age, sex and education level.
+3. Obtain z-score: subtract the predicted score (2) from the scaled score (1), and divide by the residual error of the regression model
 
 ## Deliverables
 
 With this project, the reader will gain insight in how certain demographical parameters (age, age^2, gender and education level) affect the score on the SDMT, BVMT-R and CVLT-II. In the streamlit web application, the readership can adjust all parameters and scores according to their preferences. Also the cut-off (z score) that declares cognitive impairment can be chosen.
 
-## Repo explanation
-
-The project adopts the following file structure:
-
-1. BICAMS_application.py: the main script that runs the application using streamlit. It depends on the following elements:
-
-   1. Data (`load_data.py`). Location of the data and description in the "data" and "data_descriptions" folder respectively.
-
-      - class `ConversionTable`: a look-up table that is used for the conversion from raw to scaled scores
-
-        Attributes:
-
-        - `sdmt`: sdmt conversion table
-        - `bvmt`: bvmt conversion table
-        - `cvlt`: cvlt conversion table
-        - `description`: description of the structure of a conversion table
-
-      - class `ReferenceData`: A 100.000 element vector creating the normal distribution of the reference population.
-
-        Attributes:
-
-        - `data`: numpy array of length 100.000
-        - `description`: description of the data
-
-   2. Functions (`functions.py`)
-
-      - `normalization_pipeline` is the mother function that combines all other functions to do the normalization
-      - `get_expected_score` generates an expected cognitive score
-      - `raw_to_scaled` converts raw value to scaled value
-      - `to_z_score` turns the expected and scaled score to a z-score
-      - `impaired_or_not` declares whether the z-score is impaired or not
-
 ## How to run it + dependencies
 General: Make sure that you have any version of python 3 installed on your computer.
 
-### Clone the repository to your local computer
+### 1. Clone the repository to your local computer
 
 Please open a terminal window in a folder that will subsequently contain the GitHub repo after running following command: `git clone https://github.com/Sdniss/BICAMS_web_application`. Subsequently, type `cd BICAMS_web_application` to enter that folder in the terminal.
 
-### Environment set-up: 
+### 2. Environment set-up:
 
-To be able to run the eventual script, we first have to set up the environment containing the correct dependencies that the code relies on. Please pick one of the commands stated below, according to the operating system of your local computer. By running the command, a virtual environment called `BICAMS_app_venv` is created within your local repository and subsequently enriched with the dependencies that are listed in `dependencies.txt`.
+To be able to run the main script, we first have to set up the environment containing the correct dependencies that the code relies on. In the table below, please pick the column that accords with the operating system you are using and run the commands in the terminal. Under the `explanation` column, you can keep track of what operation is performed with the corresponding command.
 
-- Mac: `python setup_environment_mac.py`
-- Windows: `python setup_environment_windows.py`
-- Linux: `python setup_environment_linux.py`
+| Step | Explanation                                                  | Mac                                    | Windows                             | Linux                                  |
+| ---- | ------------------------------------------------------------ | -------------------------------------- | ----------------------------------- | -------------------------------------- |
+| 1    | Create a virtual environment (`BICAMS_norm_venv`) within your local repository | `python3 -m venv BICAMS_norm_venv`     | `python3 -m venv BICAMS_norm_venv`  | `python3 -m venv BICAMS_norm_venv`     |
+| 2    | Activate the virtual environment                             | `source BICAMS_norm_venv/bin/activate` | `BICAMS_norm_venv\Scripts\activate` | `source BICAMS_norm_venv/bin/activate` |
+| 3    | Install all dependencies (`dependencies.txt`) within the virtual environment | `pip3 install -r dependencies.txt`     | `pip3 install -r dependencies.txt`  | `pip3 install -r dependencies.txt`     |
 
-### Preparation and running the main script
 
-To perform the calculations for z-scores and impairment per domain, complete the following steps:
+### 3. Running the main script
 
-1. Prepare your dataframe to meet the following requirements:
-
-   - Filename: `data_to_transform.csv`
-
-   - Column headers: `age`, `sex`, `ecucation`, `sdmt`, `bvmt`, `cvlt`
-
-     Note 1: please use exactly these column names in this order
-
-     Note 2: only the 3 first columns are an absolute requirement. For the cognitive scores, please prepare your dataframe to only contain columns for which you have data. Hence, this can be a subset of the latter 3 columns, but should at least include one of them
-
-2. Upload your file to the `data` directory. It will replace the `data_to_transform.csv` that is currently there, and which is just mock data included by default
-
-3. Run `streamlit run BICAMS_application.py` to start the application. A localhost will appear in your browser, or you can fetch it as printed in the terminal after `Local URL:`. The app is now visible in this browser tab. Once you adapt something in the app, the script will automatically run again and update the app according to your preferences. 
+Run `streamlit run BICAMS_application.py` to start the application. A localhost will appear in your browser, or you can fetch it as printed in the terminal after `Local URL:`. The app is now visible in this browser tab. Once you adapt something in the app, the script will automatically run again and update the app according to your preferences.
 
