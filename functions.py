@@ -28,7 +28,7 @@ def get_expected_score(data_vector, test):
     :return: the expected score on the respective test
     """
     weight_dict = {'sdmt': [10.648, -0.289, 0.002, -0.05, 0.479],
-                   'cvlt': [9.052, -0.230, 0.002, -2.182, 0.323],
+                   'cvlt': [9.052, -0.230, 0.002, 2.182, 0.323],
                    'bvmt': [16.902, -0.473, 0.005, -1.427, 0.341]}
 
     weight_vector = weight_dict.get(test)
