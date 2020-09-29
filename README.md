@@ -47,6 +47,7 @@ To be able to run the main script, we first have to set up the environment conta
 | 2    | Activate the virtual environment                             | `source BICAMS_norm_venv/bin/activate` | `BICAMS_norm_venv\Scripts\activate` | `source BICAMS_norm_venv/bin/activate` |
 | 3    | Install all dependencies (`dependencies.txt`) within the virtual environment | `pip3 install -r dependencies.txt`     | `pip3 install -r dependencies.txt`  | `pip3 install -r dependencies.txt`     |
 
+> Warning: Installing dependencies takes some time
 
 ### 3. Running the main script
 
