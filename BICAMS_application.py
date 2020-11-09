@@ -119,6 +119,15 @@ st.subheader("Your subject's characteristics:")
 st.write(subject_DF)
 st.subheader('Projection on z-scores disbribution')
 st.pyplot(fig)
+st.markdown('This figure shows a gaussian, a distribution that is very common in nature. For example, **length** follows a gaussian distribution. ' 
+            'Interpretation:<br/>'
+            '- Many people will have an average length, so the curve is high in the middle' 
+            '- There will be gadually less people proportional to how much taller (right) or smaller (left) they are'
+            '- The same applies for **cognitive performance**, many people will have average cognitive performance, extreme cases are rarer'
+            '- When people score very low, they might fall into the <span style="color:red">some red zone text</span>. When this *Cognitive Impairment* will be the case depends on the cut-off (defined above)'
+            '- Finally, the values shown in the curve are *normalized* values. Why is this important? ' 
+            'Because now, we can **compare** values; we expect a 85-year old who only went to primary school to score lower than a 25-year old woman that went to university. ' 
+            'If they both score 50 on sdmt, we have to correct for their *Age*, *Gender* and *Education* in order to compare them.')
 st.subheader('Reference to paper:')
 st.write('[Costers et al. "Does including the full CVLT-II and BVMT-R improve BICAMS? '
          'Evidence from a Belgian (Dutch) validation study." Multiple Sclerosis and Related Disorders 18 (2017):'
