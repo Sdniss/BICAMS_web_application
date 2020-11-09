@@ -24,9 +24,9 @@ edu_dict = {6: 'primary school',
 
 # First print section on main page
 st.title('BICAMS normalization visualization')
-st.write('***')
+st.markdown('***')
 st.subheader('Choose your preferences')
-st.subsubheader('1. Cognitive impairment cut-off')
+st.text('1. Cognitive impairment cut-off')
 
 # region Generators of values: Sliders and boxes
 z_cutoff = st.selectbox(
@@ -111,8 +111,8 @@ for test, test_str, conv_table, colour,label_pos in zip([sdmt, bvmt, cvlt],
 
 
 # Second print section on main page
-st.subsubheader("2. Subject's characteristics")
-st.write('***')
+st.text("2. Subject's characteristics")
+st.markdown('***')
 st.subheader("Your subject's characteristics:")
 st.write(subject_DF)
 st.subheader('Projection on z-scores disbribution')
