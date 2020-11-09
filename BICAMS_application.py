@@ -125,6 +125,7 @@ st.write('- Many people will have an average length, so the curve is high in the
 st.write('- There will be gadually less people proportional to how much taller (right) or smaller (left) they are')
 st.write('- The same applies for **cognitive performance**, many people will have average cognitive performance; extreme cases are rarer')
 st.write('- When people score very low, they might fall into the red zone. When this **Cognitive Impairment** will be the case depends on the cut-off (defined above)')
+st.markdown('***')
 st.subheader('Why is normalization important?')
 st.write('The values shown in the curve are **normalized** values, z-scores. Why is it important to normalize raw cognitive scores? ' 
          'Because now, we can **compare** values; we expect a 85-year old who only went to primary school to score lower than a 25-year old woman who went to university. ' 
