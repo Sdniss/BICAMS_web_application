@@ -15,29 +15,31 @@ cvlt_conv_table = ConversionTable().cvlt
 sex_dict = {1: 'male',
             2: 'female'}
 
-edu_dict = {6: 'primary school',
-            12: 'high school',
-            13: 'professional education',
-            15: 'bachelor',
-            17: 'master',
-            21: 'doctorate'}
+edu_dict = {'6 - primary school': 'primary school',
+            '12 - high school': 'high school',
+            '13 - professional education': 'professional education',
+            '15 - bachelor': 'bachelor',
+            '17 - master': 'master',
+            '21 - doctorate': 'doctorate'}
 
 # First print section on main page
 st.title('BICAMS normalization visualization')
 st.write("Learn here about a useful trick that allows to assess the true impact that Multiple Sclerosis has on people's cognitive performance: **transformation to z-scores**")
 st.markdown('***')
-st.header('Choose your preferences')
+st.header('Background Information')
+st.write('Some essential concepts to make sure you optimally benefit from this application:')
+st.write('The Brief International Cognitive Assessment for Multiple Sclerosis (**BICAMS**) is a test battery that screens for cognitive problems in MS. It consists of the following tests:')
+st.write('- Symbol Digit Modalities Test (SDMT): A test for information processing speed')
+st.write('- Brief Visuospatial Memory Test (BVMT): A test for visuospatial learning and memory')
+st.write('- California Verbal Learning Test (CVLT): A test for verbal learning and memory')
+st.write("Why should we transform these scores to z-scores, and what are z-scores? Let's get right to it!")
+st.markdown('***')
+st.header("Choose subject's characteristics")
 
-st.markdown("**1. Subject's characteristics**")
 name = st.text_input(
     label = 'First, choose a nice name for your subject',
     value = 'Jane Doe')
 st.write(f"Adapt {name}'s characteristics on the left")
-
-st.markdown('**2. Cognitive impairment cut-off**')
-z_cutoff = st.selectbox(
-    label = 'Choose at which z-score cutoff you declare impairment',
-    options = [-1.5, -1, -0.5, 0])
 
 st.markdown('***')
 
@@ -55,7 +57,8 @@ sex = st.sidebar.selectbox(
 
 edu = st.sidebar.selectbox(
     label = 'Define educational level (years)',
-    options = [6, 12, 13, 15, 17, 21])
+    options = edu_dict.keys())
+edu = int(edu.split(' - ')[0]) # Only get the amount of years from the options list
 
 sdmt = st.sidebar.slider(
     min_value=0,
@@ -99,6 +102,7 @@ ax.fill_between(kde_x, kde_y, where=kde_x <= z_cutoff,color='#EF9A9A')  # Then f
 # Calculate z-scores and add to ax object
 imp_dict = dict()
 z_dict = dict()
+z_cutoff = -1.5
 for test, test_str, conv_table, colour,label_pos in zip([sdmt, bvmt, cvlt],
                                                         ['sdmt', 'bvmt', 'cvlt'],
                                                         [sdmt_conv_table, bvmt_conv_table, cvlt_conv_table],
@@ -150,9 +154,10 @@ st.write('- The same applies for **cognitive performance**, many people will hav
 st.write('- When people score very low, they might fall into the red zone. When this **Cognitive Impairment** will be the case depends on the cut-off (defined above)')
 st.markdown('***')
 st.subheader('Why is normalization important?')
-st.write('The values shown in the curve are **normalized** values, z-scores. Why is it important to normalize raw cognitive scores? ' 
+st.write('The values shown in the curve are **normalized** values, z-scores. They are computed by comparing the *raw score* to what we would *expect* this person '
+         'to have based on the **Age**, **Gender** and **Education**. But why is it important to normalize raw cognitive scores? ' 
          'Because now, we can **compare** values; we expect an 85-year old man who only went to primary school to score lower than a 25-year old woman who went to university. ' 
-         'If they both score 50 on sdmt, we have to correct for their **Age**, **Gender** and **Education** in order to be able to compare them. '
+         'If they both score 50 on sdmt, the woman will have a lower z-score, since we *expect* her score to be high based on her *Age**, **Gender** and **Education**. '
          'Now, we can study the true **impact of multiple sclerosis** on the cognitive performance of the subject.')
 st.markdown('***')
 st.subheader('Reference to paper:')
