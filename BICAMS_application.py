@@ -93,7 +93,7 @@ ax.fill_between(kde_x, kde_y, where=kde_x <= z_cutoff,color='#EF9A9A')  # Then f
 # endregion
 
 # Calculate z-scores and add to ax object
-imp_dict = dict
+imp_dict = dict()
 for test, test_str, conv_table, colour,label_pos in zip([sdmt, bvmt, cvlt],
                                                         ['sdmt', 'bvmt', 'cvlt'],
                                                         [sdmt_conv_table, bvmt_conv_table, cvlt_conv_table],
