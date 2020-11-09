@@ -31,7 +31,7 @@ st.header('Choose your preferences')
 st.markdown("**1. Subject's characteristics**")
 name = st.text_input(
     label = 'First, choose a nice name for your subject',
-    value = 'Anonymous')
+    value = 'Jane Doe')
 st.write(f"Adapt {name}'s characteristics on the left")
 
 st.markdown('**2. Cognitive impairment cut-off**')
