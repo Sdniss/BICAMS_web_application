@@ -85,7 +85,8 @@ subject_dict = {'Age': age,
                 'CVLT': cvlt}
 subject_DF = pd.DataFrame(subject_dict, index = [name])
 
-# region Create z-scores distribution plot
+# Create z-scores distribution plot
+z_cutoff = -1.5
 fig, ax = plt.subplots()
 sns.kdeplot(ReferenceData().data, ax = ax, color= 'k', alpha =0.5)
 ax.spines['top'].set_visible(False)
@@ -97,12 +98,10 @@ ax.set_xlim([-4,4])
 kde_x, kde_y = ax.lines[0].get_data()
 ax.fill_between(kde_x, kde_y, where= kde_x > -4, color='#b1eba9')  # First fill everything green
 ax.fill_between(kde_x, kde_y, where=kde_x <= z_cutoff,color='#EF9A9A')  # Then fill red only where necessary
-# endregion
 
 # Calculate z-scores and add to ax object
 imp_dict = dict()
 z_dict = dict()
-z_cutoff = -1.5
 for test, test_str, conv_table, colour,label_pos in zip([sdmt, bvmt, cvlt],
                                                         ['sdmt', 'bvmt', 'cvlt'],
                                                         [sdmt_conv_table, bvmt_conv_table, cvlt_conv_table],
