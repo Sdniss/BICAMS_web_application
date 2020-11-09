@@ -28,7 +28,7 @@ st.write("Learn here about a useful trick that allows to assess the true impact 
 st.markdown('***')
 st.header('Background Information')
 st.write('Some essential concepts to make sure you optimally benefit from this application:')
-st.write('The Brief International Cognitive Assessment for Multiple Sclerosis (**BICAMS**) is a test battery that screens for cognitive problems in MS. It consists of the following tests:')
+st.write('The Brief International Cognitive Assessment for Multiple Sclerosis ([**BICAMS**](https://bmcneurol.biomedcentral.com/articles/10.1186/1471-2377-12-55)) is a test battery that screens for cognitive problems in MS. It consists of the following tests:')
 st.write('- Symbol Digit Modalities Test (SDMT): A test for information processing speed')
 st.write('- Brief Visuospatial Memory Test (BVMT): A test for visuospatial learning and memory')
 st.write('- California Verbal Learning Test (CVLT): A test for verbal learning and memory')
