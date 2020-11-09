@@ -128,7 +128,7 @@ st.write('- When people score very low, they might fall into the red zone. When 
 st.markdown('***')
 st.subheader('Why is normalization important?')
 st.write('The values shown in the curve are **normalized** values, z-scores. Why is it important to normalize raw cognitive scores? ' 
-         'Because now, we can **compare** values; we expect a 85-year old who only went to primary school to score lower than a 25-year old woman who went to university. ' 
+         'Because now, we can **compare** values; we expect an 85-year old man who only went to primary school to score lower than a 25-year old woman who went to university. ' 
          'If they both score 50 on sdmt, we have to correct for their **Age**, **Gender** and **Education** in order to be able to compare them. '
          'Now, we can study the true **impact of multiple sclerosis** on the cognitive performance of the subject.')
 st.markdown('***')
