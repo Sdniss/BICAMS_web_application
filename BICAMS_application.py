@@ -32,7 +32,7 @@ st.write('The Brief International Cognitive Assessment for Multiple Sclerosis ([
 st.write('- Symbol Digit Modalities Test (SDMT): A test for information processing speed')
 st.write('- Brief Visuospatial Memory Test (BVMT): A test for visuospatial learning and memory')
 st.write('- California Verbal Learning Test (CVLT): A test for verbal learning and memory')
-st.write("Why should we transform these scores to z-scores, and what are z-scores? Let's get right to it!")
+st.write("Why should we transform these scores to z-scores, and what are z-scores? Let's get right to it! Please play around with the values and observe the impact on the figure below.")
 st.markdown('***')
 st.header("Choose subject's characteristics")
 
@@ -150,14 +150,14 @@ st.subheader('Figure interpretation')
 st.write('- Many people will have an average length, so the curve is high in the middle')
 st.write('- There will be gadually less people proportional to how much taller (right) or smaller (left) they are')
 st.write('- The same applies for **cognitive performance**, many people will have average cognitive performance; extreme cases are rarer')
-st.write('- When people score very low, they might fall into the red zone. When this **Cognitive Impairment** will be the case depends on the cut-off (defined above)')
+st.write('- When people score very low, they might fall into the red zone, **Cognitive Impairment**, that is defined here as having a z-score lower than 1.5')
 st.markdown('***')
 st.subheader('Why is normalization important?')
 st.write('The values shown in the curve are **normalized** values, z-scores. They are computed by comparing the *raw score* to what we would *expect* this person '
          'to have based on the **Age**, **Gender** and **Education**. But why is it important to normalize raw cognitive scores? ' 
          'Because now, we can **compare** values; we expect an 85-year old man who only went to primary school to score lower than a 25-year old woman who went to university. ' 
-         'If they both score 50 on sdmt, the woman will have a lower z-score, since we *expect* her score to be high based on her *Age**, **Gender** and **Education**. '
-         'Now, we can study the true **impact of multiple sclerosis** on the cognitive performance of the subject.')
+         'If they both score 50 on sdmt, the woman will have a lower z-score, since we *expect* her score to be high based on her **Age**, **Gender** and **Education**. '
+         'Now, we can study the true impact of multiple sclerosis on the cognitive performance of the subject.')
 st.markdown('***')
 st.subheader('Reference to paper:')
 st.write('[Costers et al. "Does including the full CVLT-II and BVMT-R improve BICAMS? '
