@@ -42,7 +42,7 @@ z_cutoff = st.selectbox(
 st.markdown('***')
 
 # Sidebar section
-st.sidebar.write(f"{name}'s characteristics")
+st.sidebar.subheader(f"{name}'s characteristics")
 
 age = st.sidebar.slider(
     min_value=18,
