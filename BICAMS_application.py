@@ -27,19 +27,17 @@ st.title('BICAMS normalization visualization')
 st.write("Learn here about a useful trick that allows to assess the true impact that Multiple Sclerosis has on people's cognitive performance: **transformation to z-scores**")
 st.markdown('***')
 st.header('Choose your preferences')
-st.markdown('**1. Cognitive impairment cut-off**')
 
-z_cutoff = st.selectbox(
-    label = 'Choose at which z-score cutoff you declare impairment',
-    options = [-1.5, -1, -0.5, 0])
-
-st.markdown("**2. Subject's characteristics**")
-
+st.markdown("**1. Subject's characteristics**")
 name = st.text_input(
     label = 'First, choose a nice name for your subject',
     value = 'Anonymous')
-
 st.write(f'Adapt {name} characteristics on the left')
+
+st.markdown('**2. Cognitive impairment cut-off**')
+z_cutoff = st.selectbox(
+    label = 'Choose at which z-score cutoff you declare impairment',
+    options = [-1.5, -1, -0.5, 0])
 
 st.markdown('***')
 
