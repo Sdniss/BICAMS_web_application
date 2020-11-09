@@ -24,7 +24,7 @@ edu_dict = {6: 'primary school',
 
 # First print section on main page
 st.title('BICAMS normalization visualization')
-st.subheader('Choose your preferences below and in the left sidebar:')
+st.write('Choose your preferences below and in the left sidebar:')
 
 # region Generators of values: Sliders and boxes
 z_cutoff = st.selectbox(
