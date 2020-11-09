@@ -94,6 +94,7 @@ ax.fill_between(kde_x, kde_y, where=kde_x <= z_cutoff,color='#EF9A9A')  # Then f
 
 # Calculate z-scores and add to ax object
 imp_dict = dict()
+z_dict = dict()
 for test, test_str, conv_table, colour,label_pos in zip([sdmt, bvmt, cvlt],
                                                         ['sdmt', 'bvmt', 'cvlt'],
                                                         [sdmt_conv_table, bvmt_conv_table, cvlt_conv_table],
@@ -111,14 +112,18 @@ for test, test_str, conv_table, colour,label_pos in zip([sdmt, bvmt, cvlt],
             text_position = ax.get_ylim()[1]-(ax.get_ylim()[1]/10)*label_pos
             ax.text(x=z_score+0.05, y= text_position, s=test_str, rotation =90, color = colour)
 
-            # Update imp_dict
+            # Update imp_dict and z_dict
             if imp_bool == 0:
                         text = 'preserved'
             else:
                         text = 'impaired'
             imp_dict.update({test_str: text})
+            z_dict.update({test_str: z_score})
 
-# Get text for impaired/preserved
+# Get z-score and text for impaired/preserved
+sdmt_z = round(z_dict.get('sdmt'), 2)
+bvmt_z = round(z_dict.get('bvmt'), 2)
+cvlt_z = round(z_dict.get('cvlt'), 2)
 sdmt_imp = imp_dict.get('sdmt')
 bvmt_imp = imp_dict.get('bvmt')
 cvlt_imp = imp_dict.get('cvlt')
@@ -131,9 +136,9 @@ st.header('View your results!')
 st.subheader("Your subject's characteristics:")
 st.write(subject_DF)
 st.write(f'{name} scored:')
-st.write(f'- SDMT: {sdmt}. Information Processing Speed is {sdmt_imp}')
-st.write(f'- BVMT: {bvmt}. Visual Learning and Memory is {bvmt_imp}')
-st.write(f'- CVLT: {cvlt}. Verbal Learning and Memory is {cvlt_imp}')
+st.write(f'- SDMT: {sdmt}. Information Processing Speed is {sdmt_imp} (z-score = {sdmt_z})')
+st.write(f'- BVMT: {bvmt}. Visual Learning and Memory is {bvmt_imp} (z-score = {bvmt_z})')
+st.write(f'- CVLT: {cvlt}. Verbal Learning and Memory is {cvlt_imp} (z-score = {cvlt_z})')
 st.subheader('Projection on z-scores disbribution')
 st.pyplot(fig)
 st.write('This figure shows a gaussian, a distribution that is very common in nature. For example, **length** follows a gaussian distribution.') 
