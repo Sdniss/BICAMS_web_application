@@ -24,21 +24,26 @@ edu_dict = {6: 'primary school',
 
 # First print section on main page
 st.title('BICAMS normalization visualization')
-st.write("Learn here about a useful trick that allows to assess the true impact that Multiple Sclerosis has on people's cognitive performance: transformation to z-scores")
+st.write("Learn here about a useful trick that allows to assess the true impact that Multiple Sclerosis has on people's cognitive performance: **transformation to z-scores**")
 st.markdown('***')
 st.header('Choose your preferences')
 st.markdown('**1. Cognitive impairment cut-off**')
 
-# region Generators of values: Sliders and boxes
 z_cutoff = st.selectbox(
     label = 'Choose at which z-score cutoff you declare impairment',
     options = [-1.5, -1, -0.5, 0])
 
+st.markdown("**2. Subject's characteristics**")
 
-name = st.sidebar.text_input(
-    label = 'Choose a nice name for your subject',
+name = st.text_input(
+    label = 'First, choose a nice name for your subject',
     value = 'Anonymous')
 
+st.write(f'Adapt {name} characteristics on the left')
+
+st.markdown('***')
+
+# Sliders and boxes on left side of screen
 age = st.sidebar.slider(
     min_value=18,
     max_value=100,
@@ -66,7 +71,6 @@ cvlt = st.sidebar.slider(
     min_value=0,
     max_value=100,
     label = 'Define CVLT score')
-# endregion
 
 # Create table
 subject_dict = {'Age': age,
@@ -129,9 +133,6 @@ bvmt_imp = imp_dict.get('bvmt')
 cvlt_imp = imp_dict.get('cvlt')
             
 # Second print section on main page
-st.markdown("**2. Subject's characteristics**")
-st.write('Adapt this on the left side of the screen')
-st.markdown('***')
 st.header('View your results!')
 st.subheader("Your subject's characteristics:")
 st.write(subject_DF)
