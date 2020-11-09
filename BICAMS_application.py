@@ -34,7 +34,7 @@ z_cutoff = st.selectbox(
 
 name = st.sidebar.selectbox(
     label = 'Choose a nice name for your subject',
-    options = ['Guy', 'Jeroen', 'Lars', 'Johan', 'Stijn', 'Chiara', 'Frederick', 'Delphine'])
+    options = ['Guy', 'Jeroen', 'Lars', 'Johan', 'Stijn', 'Chiara', 'Frederik', 'Delphine'])
 
 age = st.sidebar.slider(
     min_value=18,
@@ -110,6 +110,7 @@ for test, test_str, conv_table, colour,label_pos in zip([sdmt, bvmt, cvlt],
 
 # Second print section on main page
 st.subheader("Your subject's characteristics:")
+st.write('Adapt your preferences on the left side of the screen')
 st.write(subject_DF)
 st.subheader('Projection on z-scores disbribution')
 st.pyplot(fig)
