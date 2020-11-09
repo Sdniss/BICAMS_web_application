@@ -24,6 +24,7 @@ edu_dict = {6: 'primary school',
 
 # First print section on main page
 st.title('BICAMS normalization visualization')
+st.write("Learn here about a useful trick that allows to assess the true impact that Multiple Sclerosis has on people's cognitive performance: transformation to z-scores")
 st.markdown('***')
 st.header('Choose your preferences')
 st.markdown('**1. Cognitive impairment cut-off**')
@@ -54,17 +55,17 @@ edu = st.sidebar.selectbox(
 sdmt = st.sidebar.slider(
     min_value=0,
     max_value=100,
-    label = 'Define sdmt score')
+    label = 'Define SDMT score')
 
 bvmt = st.sidebar.slider(
     min_value=0,
     max_value=36,
-    label = 'Define bvmt score')
+    label = 'Define BVMT score')
 
 cvlt = st.sidebar.slider(
     min_value=0,
     max_value=100,
-    label = 'Define cvlt score')
+    label = 'Define CVLT score')
 # endregion
 
 # Create table
@@ -92,24 +93,36 @@ ax.fill_between(kde_x, kde_y, where=kde_x <= z_cutoff,color='#EF9A9A')  # Then f
 # endregion
 
 # Calculate z-scores and add to ax object
+imp_dict = dict
 for test, test_str, conv_table, colour,label_pos in zip([sdmt, bvmt, cvlt],
                                                         ['sdmt', 'bvmt', 'cvlt'],
                                                         [sdmt_conv_table, bvmt_conv_table, cvlt_conv_table],
                                                         ['blue', 'black','purple'],
                                                         [1,2,3]):
 
-    z_score, imp_bool = normalization_pipeline(data_vector = [age, age**2, sex, edu],
+            z_score, imp_bool = normalization_pipeline(data_vector = [age, age**2, sex, edu],
                                                raw_score= test,
                                                test = test_str,
                                                conversion_table= conv_table,
                                                z_cutoff= z_cutoff)
 
-    # Plot vertical line on x-position being z-score. Add vertical text alongside it.
-    ax.axvline(x=z_score, color = colour)
-    text_position = ax.get_ylim()[1]-(ax.get_ylim()[1]/10)*label_pos
-    ax.text(x=z_score+0.05, y= text_position, s=test_str, rotation =90, color = colour)
+            # Plot vertical line on x-position being z-score. Add vertical text alongside it.
+            ax.axvline(x=z_score, color = colour)
+            text_position = ax.get_ylim()[1]-(ax.get_ylim()[1]/10)*label_pos
+            ax.text(x=z_score+0.05, y= text_position, s=test_str, rotation =90, color = colour)
 
+            # Update imp_dict
+            if imp_bool == 0:
+                        text = 'preserved'
+            else:
+                        text = 'impaired'
+            imp_dict.update({test_str: text})
 
+# Get text for impaired/preserved
+sdmt_imp = imp_dict.get('sdmt')
+bvmt_imp = imp_dict.get('bvmt')
+cvlt_imp = imp_dict.get('cvlt')
+            
 # Second print section on main page
 st.markdown("**2. Subject's characteristics**")
 st.write('Adapt this on the left side of the screen')
@@ -117,6 +130,10 @@ st.markdown('***')
 st.header('View your results!')
 st.subheader("Your subject's characteristics:")
 st.write(subject_DF)
+st.write(f'{name} scored:')
+st.write(f'- SDMT: {sdmt}. Information Processing Speed is {sdmt_imp}')
+st.write(f'- BVMT: {bvmt}. Visual Learning and Memory is {bvmt_imp}')
+st.write(f'- CVLT: {cvlt}. Verbal Learning and Memory is {cvlt_imp}')
 st.subheader('Projection on z-scores disbribution')
 st.pyplot(fig)
 st.write('This figure shows a gaussian, a distribution that is very common in nature. For example, **length** follows a gaussian distribution.') 
