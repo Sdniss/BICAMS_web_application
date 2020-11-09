@@ -57,7 +57,7 @@ sex = st.sidebar.selectbox(
 
 edu = st.sidebar.selectbox(
     label = 'Define educational level (years)',
-    options = edu_dict.keys())
+    options = list(edu_dict.keys()))
 edu = int(edu.split(' - ')[0]) # Only get the amount of years from the options list
 
 sdmt = st.sidebar.slider(
