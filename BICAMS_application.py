@@ -149,7 +149,7 @@ st.write('This figure shows a gaussian, a distribution that is very common in na
 st.subheader('Figure interpretation')
 st.write('- Many people will have an average length, so the curve is high in the middle')
 st.write('- There will be gadually less people proportional to how much taller (right) or smaller (left) they are')
-st.write('- The same applies for **cognitive performance**, many people will have average cognitive performance; extreme cases are rarer')
+st.write('- The same applies for **cognitive performance**: many people will have average cognitive performance, extreme cases are rarer')
 st.write('- When people score very low, they might fall into the red zone, **Cognitive Impairment**, that is defined here as having a z-score lower than 1.5')
 st.markdown('***')
 st.subheader('Why is normalization important?')
