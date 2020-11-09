@@ -41,7 +41,9 @@ z_cutoff = st.selectbox(
 
 st.markdown('***')
 
-# Sliders and boxes on left side of screen
+# Sidebar section
+st.sidebar.write(f"{name}'s characteristics")
+
 age = st.sidebar.slider(
     min_value=18,
     max_value=100,
