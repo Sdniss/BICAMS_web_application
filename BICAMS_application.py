@@ -35,9 +35,9 @@ z_cutoff = st.selectbox(
     options = [-1.5, -1, -0.5, 0])
 
 
-name = st.sidebar.selectbox(
+name = st.sidebar.text_input(
     label = 'Choose a nice name for your subject',
-    options = ['Guy', 'Jeroen', 'Lars', 'Johan', 'Stijn', 'Chiara', 'Frederik', 'Delphine'])
+    value = 'Anonymous')
 
 age = st.sidebar.slider(
     min_value=18,
