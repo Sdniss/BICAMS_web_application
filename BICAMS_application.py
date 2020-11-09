@@ -23,7 +23,7 @@ edu_dict = {'6 - primary school': 'primary school',
             '21 - doctorate': 'doctorate'}
 
 # First print section on main page
-st.title('BICAMS normalization visualization')
+st.title('How to compare cognitive scores in MS')
 st.write("Learn here about a useful trick that allows to assess the true impact that Multiple Sclerosis has on people's cognitive performance: **transformation to z-scores**")
 st.markdown('***')
 st.header('Background Information')
