@@ -25,7 +25,7 @@ edu_dict = {6: 'primary school',
 # First print section on main page
 st.title('BICAMS normalization visualization')
 st.markdown('***')
-st.subheader('Choose your preferences')
+st.header('Choose your preferences')
 st.markdown('**1. Cognitive impairment cut-off**')
 
 # region Generators of values: Sliders and boxes
@@ -114,7 +114,7 @@ for test, test_str, conv_table, colour,label_pos in zip([sdmt, bvmt, cvlt],
 st.markdown("**2. Subject's characteristics**")
 st.text('Adapt this on the left side of the screen')
 st.markdown('***')
-st.subheader("Your subject's characteristics:")
+st.header("Your subject's characteristics:")
 st.write(subject_DF)
 st.subheader('Projection on z-scores disbribution')
 st.pyplot(fig)
