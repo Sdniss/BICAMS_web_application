@@ -120,14 +120,17 @@ st.write(subject_DF)
 st.subheader('Projection on z-scores disbribution')
 st.pyplot(fig)
 st.write('This figure shows a gaussian, a distribution that is very common in nature. For example, **length** follows a gaussian distribution.') 
-st.write('Interpretation:')
+st.subheader('Figure interpretation')
 st.write('- Many people will have an average length, so the curve is high in the middle')
 st.write('- There will be gadually less people proportional to how much taller (right) or smaller (left) they are')
-st.write('- The same applies for **cognitive performance**, many people will have average cognitive performance, extreme cases are rarer')
+st.write('- The same applies for **cognitive performance**, many people will have average cognitive performance; extreme cases are rarer')
 st.write('- When people score very low, they might fall into the red zone. When this **Cognitive Impairment** will be the case depends on the cut-off (defined above)')
-st.write('- Finally, the values shown in the curve are **normalized** values. Why is this important? ' 
-        'Because now, we can **compare** values; we expect a 85-year old who only went to primary school to score lower than a 25-year old woman that went to university. ' 
-        'If they both score 50 on sdmt, we have to correct for their **Age**, **Gender** and **Education** in order to compare them.')
+st.subheader('Why is normalization important?')
+st.write('The values shown in the curve are **normalized** values, z-scores. Why is it important to normalize raw cognitive scores? ' 
+         'Because now, we can **compare** values; we expect a 85-year old who only went to primary school to score lower than a 25-year old woman who went to university. ' 
+         'If they both score 50 on sdmt, we have to correct for their **Age**, **Gender** and **Education** in order to be able to compare them. '
+         'Now, we can study the true **impact of multiple sclerosis** on the cognitive performance of the subject.')
+st.markdown('***')
 st.subheader('Reference to paper:')
 st.write('[Costers et al. "Does including the full CVLT-II and BVMT-R improve BICAMS? '
          'Evidence from a Belgian (Dutch) validation study." Multiple Sclerosis and Related Disorders 18 (2017):'
