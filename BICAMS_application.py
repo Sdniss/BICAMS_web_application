@@ -119,7 +119,7 @@ st.subheader("Your subject's characteristics:")
 st.write(subject_DF)
 st.subheader('Projection on z-scores disbribution')
 st.pyplot(fig)
-st.text('This figure shows a gaussian, a distribution that is very common in nature. For example, **length** follows a gaussian distribution. ' 
+st.text('This figure shows a gaussian, a distribution that is very common in nature. For example, **length** follows a gaussian distribution.') 
 st.text('Interpretation:')
 st.text('- Many people will have an average length, so the curve is high in the middle')
 st.text('- There will be gadually less people proportional to how much taller (right) or smaller (left) they are')
