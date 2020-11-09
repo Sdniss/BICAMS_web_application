@@ -25,6 +25,7 @@ edu_dict = {'6 - primary school': 'primary school',
 # First print section on main page
 st.title('How to compare cognitive scores in MS')
 st.write("Learn here about a useful trick that allows to assess the true impact that Multiple Sclerosis has on people's cognitive performance: **transformation to z-scores**")
+st.write('This work is based on the paper by [Costers et al. 2017](https://doi.org/10.1016/j.msard.2017.08.018)')
 st.markdown('***')
 st.header('Background Information')
 st.write('Some essential concepts to make sure you optimally benefit from this application:')
