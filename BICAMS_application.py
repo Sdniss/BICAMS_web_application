@@ -158,7 +158,7 @@ st.write('The values shown in the curve are **normalized** values, z-scores. The
          'to have based on the **Age**, **Gender** and **Education**. But why is it important to normalize raw cognitive scores? ' 
          'Because now, we can **compare** values; we expect an 85-year old man who only went to primary school to score lower than a 25-year old woman who went to university. ' 
          'If they both score 50 on sdmt, the woman will have a lower z-score, since we *expect* her score to be high based on her **Age**, **Gender** and **Education**. '
-         'Now, we can study the true impact of multiple sclerosis on the cognitive performance of the subject.')
+         'Now, we can study the true impact of Multiple Sclerosis on the cognitive performance of the subject.')
 st.markdown('***')
 st.subheader('Reference to paper:')
 st.write('[Costers et al. "Does including the full CVLT-II and BVMT-R improve BICAMS? '
