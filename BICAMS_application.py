@@ -172,10 +172,12 @@ st.write('The values shown in the curve are **normalized** values, z-scores. The
 st.markdown('***')
 st.header('Convert your own data!')
 st.subheader('Step 1: Prepare your data')
+st.write('This is what your data should look like:')
+st.write(pd.read_excel("data/mock_data.xlsx").head())
 st.write('**Column headers**: age, sex, education, sdmt, bvmt, cvlt')
 st.write('- *age* column: years (integer)')
 st.write('- *sex* column: 1 = Male, 2 = Female (integer)')
-st.write('- *education* column: years of education (integer), choose from 6, 12, 13, 15, 17, 21. '
+st.write('- *education* column: years of education (integer). Choose from [6, 12, 13, 15, 17, 21]. '
          'Check the option list in the sidebar ("Define education level") for the corresponding degrees.')
 st.write('- *sdmt/bvmt/cvlt*: raw score on the test (integer)')
 st.write('**Note 1**: please use exactly these column names in this order')
