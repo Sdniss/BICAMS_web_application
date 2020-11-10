@@ -299,9 +299,9 @@ if input_data.empty == False:
     st.write(transformed_data.head())
     st.write('Fetch your excel file below!')
     st.markdown(get_table_download_link(transformed_data), unsafe_allow_html=True)
-    st.write('**Note**:')
+    st.write('**Note**')
     st.write('- In the "imp" columns, 0 denotes preserved, 1 denotes impaired')
-    st.write('- age^2 was added which is the age column squared. This is necessary to calculate the z-scores.) 
+    st.write('- age^2 was added which is the age column squared. This is necessary to calculate the z-scores.') 
 else:
     st.write('Nothing to show now, upload your file in step 3!')
 st.markdown('***')
