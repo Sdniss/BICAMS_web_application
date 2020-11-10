@@ -222,8 +222,6 @@ if input_object:
 
     # endregion
 
-    age_2 = input_data['age'] ** 2
-    input_data.insert(loc=1, column='age^2', value=age_2)  # insert age^2 column in second position (thus loc = 1)
 else:
     input_data = pd.DataFrame()
 
@@ -233,6 +231,10 @@ if input_data.empty == False:
     # Print preview of the data
     st.write('Your input data (first 5 rows):')
     st.write(input_data)
+
+    # Add age^2 column for the calculation
+    age_2 = input_data['age'] ** 2
+    input_data.insert(loc=1, column='age^2', value=age_2)  # insert age^2 column in second position (thus loc = 1)
 
     # Load the data (either mock data or your data)
     demographics = input_data[['age', 'age^2', 'sex', 'education']]
@@ -297,7 +299,9 @@ if input_data.empty == False:
     st.write(transformed_data.head())
     st.write('Fetch your excel file below!')
     st.markdown(get_table_download_link(transformed_data), unsafe_allow_html=True)
-    st.write('In the "imp" columns, 0 denotes preserved, 1 denotes impaired')
+    st.write('**Note**:')
+    st.write('- In the "imp" columns, 0 denotes preserved, 1 denotes impaired')
+    st.write('- age^2 was added which is the age column squared. This is necessary to calculate the z-scores.) 
 else:
     st.write('Nothing to show now, upload your file in step 3!')
 st.markdown('***')
