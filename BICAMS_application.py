@@ -60,7 +60,7 @@ sex = st.sidebar.selectbox(
 edu = st.sidebar.selectbox(
     label = 'Define educational level (years)',
     options = list(edu_dict.keys()))
-edu = int(edu.split(' - ')[0]) # Only get the amount of years from the options list
+edu_int = int(edu.split(' - ')[0]) # Only get the amount of years from the options list
 
 sdmt = st.sidebar.slider(
     min_value=0,
@@ -110,7 +110,7 @@ for test, test_str, conv_table, colour,label_pos in zip([sdmt, bvmt, cvlt],
                                                         ['blue', 'black','purple'],
                                                         [1,2,3]):
 
-            z_score, imp_bool = normalization_pipeline(data_vector = [age, age**2, sex, edu],
+            z_score, imp_bool = normalization_pipeline(data_vector = [age, age**2, sex, edu_int],
                                                raw_score= test,
                                                test = test_str,
                                                conversion_table= conv_table,
