@@ -148,7 +148,7 @@ st.subheader('Projection on z-scores disbribution')
 st.pyplot(fig)
 show_disclaimer = st.button(label = 'Show disclaimer about impairment cut-off of z = -1.5')
 if show_disclaimer:
-            st.write('*the sensitivity of this normalization method (correcting with regression-based norms from a healthy reference population) is higher '
+            st.write('*The sensitivity of this normalization method (correcting with regression-based norms from a healthy reference population) is higher '
                      'than traditional normalization methods. Thus, it is recommended to use a lower cut-off of -1 or -0.5, opposed to the [traditional value of -1.5](https://n.neurology.org/content/90/6/278), '
                      'to classify a subject as cognitively impaired*')
 st.write('This figure shows a gaussian, a distribution that is very common in nature. For example, **length** follows a gaussian distribution.') 
