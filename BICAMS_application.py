@@ -26,7 +26,7 @@ edu_dict = {'6 - primary school': 'primary school',
 st.title('How to compare cognitive scores in MS')
 st.write("Learn here about a useful trick that allows to assess the true impact that Multiple Sclerosis has on people's cognitive performance: **transformation to z-scores**")
 st.write('This work is based on the paper by [Costers et al. 2017](https://doi.org/10.1016/j.msard.2017.08.018)')
-st.write('**ALERT!** Do you want to convert your own data to z-scores? Scroll down for more details!')
+st.write('**Do you want to convert your own data to z-scores? Scroll down for more details!**')
 st.markdown('***')
 st.header('Background Information')
 st.write('Some essential concepts to make sure you optimally benefit from this application:')
@@ -192,6 +192,36 @@ st.subheader('Step 3: Upload your excel file')
 input_object = st.file_uploader("Browse for a file or drag and drop here:", type=("xlsx"))
 if input_object:
     input_data = pd.read_excel(input_object)
+
+    # region Perform checks if the data was correctly entered
+    error_dict = {'columns': 'Please be sure to use the correct column names and that they are lower case',
+                  'age': 'Please use age values between 0 and 125 years, and only use integer values',
+                  'sex': 'Please assure the following encoding: Male = 1, Female = 2',
+                  'education': 'Please use education levels that are encoded as 6, 12, 13, 15, 17 or 21 years',
+                  'sdmt': 'Please use sdmt values between 0 and 110',
+                  'bvmt': 'Please use bvmt values between 0 and 36',
+                  'cvlt': 'Please use cvlt values between 0 and 80'}
+
+    allowed_range_dict = {'columns': {'age', 'sex', 'education', 'sdmt', 'bvmt', 'cvlt'},
+                          'age': set(range(0, 126)),
+                          'sex': {1, 2},
+                          'education': {6, 12, 13, 15, 17, 21},
+                          'sdmt': set(range(0, 111)),
+                          'bvmt': set(range(0, 37)),
+                          'cvlt': set(range(0, 81))}
+
+    for key in ['columns'] + list(input_data.columns):
+        # Extract the data vector for a specific key
+        if key == 'columns':
+            input_vector = set(input_data.columns)
+        else:
+            input_vector = set(input_data[key])
+        # Check whether the vector is within the allowed range
+        if not input_vector.issubset(allowed_range_dict.get(key)):
+            raise ValueError(error_dict.get(key))
+
+    # endregion
+
     age_2 = input_data['age'] ** 2
     input_data.insert(loc=1, column='age^2', value=age_2)  # insert age^2 column in second position (thus loc = 1)
 else:
