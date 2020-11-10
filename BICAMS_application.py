@@ -15,7 +15,7 @@ cvlt_conv_table = ConversionTable().cvlt
 sex_dict = {1: 'male',
             2: 'female'}
 
-edu_options = ['6 - primary school', '12 - high school', '13 - professional education', '15 - bachelor', '17 - master', '21 - doctorate'}
+edu_options = ['6 - primary school', '12 - high school', '13 - professional education', '15 - bachelor', '17 - master', '21 - doctorate']
 
 # First print section on main page
 st.title('How to compare cognitive scores in MS')
