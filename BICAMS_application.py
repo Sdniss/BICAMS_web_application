@@ -26,7 +26,7 @@ edu_dict = {'6 - primary school': 'primary school',
 st.title('How to compare cognitive scores in MS')
 st.write("Learn here about a useful trick that allows to assess the true impact that Multiple Sclerosis has on people's cognitive performance: **transformation to z-scores**")
 st.write('This work is based on the paper by [Costers et al. 2017](https://doi.org/10.1016/j.msard.2017.08.018)')
-st.write('Do you want to convert your own data to z-scores? Scroll down for more details!')
+st.write('**ALERT!** Do you want to convert your own data to z-scores? Scroll down for more details!')
 st.markdown('***')
 st.header('Background Information')
 st.write('Some essential concepts to make sure you optimally benefit from this application:')
@@ -174,7 +174,6 @@ st.header('Convert your own data!')
 st.subheader('Step 1: Prepare your data')
 st.write('This is what your data should look like:')
 st.write(pd.read_excel("data/mock_data.xlsx").head())
-st.write('**Column headers**: age, sex, education, sdmt, bvmt, cvlt')
 st.write('- *age* column: years (integer)')
 st.write('- *sex* column: 1 = Male, 2 = Female (integer)')
 st.write('- *education* column: years of education (integer). Choose from [6, 12, 13, 15, 17, 21]. '
@@ -269,6 +268,8 @@ if input_data.empty == False:
     st.write('Fetch your excel file below!')
     st.markdown(get_table_download_link(transformed_data), unsafe_allow_html=True)
     st.write('In the "imp" columns, 0 denotes preserved, 1 denotes impaired')
+else:
+    st.write('Nothing to show now, upload your file in step 3!')
 st.markdown('***')
 
 # Paper reference
