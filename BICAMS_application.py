@@ -26,6 +26,7 @@ edu_dict = {'6 - primary school': 'primary school',
 st.title('How to compare cognitive scores in MS')
 st.write("Learn here about a useful trick that allows to assess the true impact that Multiple Sclerosis has on people's cognitive performance: **transformation to z-scores**")
 st.write('This work is based on the paper by [Costers et al. 2017](https://doi.org/10.1016/j.msard.2017.08.018)')
+st.write('Do you want to convert your own data to z-scores? Scroll down for more details!')
 st.markdown('***')
 st.header('Background Information')
 st.write('Some essential concepts to make sure you optimally benefit from this application:')
@@ -136,7 +137,7 @@ sdmt_imp = imp_dict.get('sdmt')
 bvmt_imp = imp_dict.get('bvmt')
 cvlt_imp = imp_dict.get('cvlt')
             
-# Second print section on main page
+# Results section
 st.header('View your results!')
 st.subheader("Your subject's characteristics:")
 st.write(subject_DF)
@@ -158,13 +159,21 @@ st.write('- There will be gadually less people proportional to how much taller (
 st.write('- The same applies for **cognitive performance**: many people will have average cognitive performance, extreme cases are rarer')
 st.write('- When people score very low, they might fall into the red zone, **Cognitive Impairment**, that is defined here as having a z-score lower than 1.5')
 st.markdown('***')
+
+# Explanation of normalization
 st.subheader('Why is normalization important?')
 st.write('The values shown in the curve are **normalized** values, z-scores. They are computed by comparing the *raw score* to what we would *expect* this person '
          'to have based on the **Age**, **Gender** and **Education**. But why is it important to normalize raw cognitive scores? ' 
          'Because now, we can **compare** values; we expect an 85-year old man who only went to primary school to score lower than a 25-year old woman who went to university. ' 
          'If they both score 50 on sdmt, the woman will have a lower z-score, since we *expect* her score to be high based on her **Age**, **Gender** and **Education**. '
          'Now, we can study the true impact of Multiple Sclerosis on the cognitive performance of the subject.')
+
+# File upload section
 st.markdown('***')
+file = st.file_uploader("Upload a file", type=("csv"))
+st.markdown('***')
+
+# Paper reference
 st.subheader('Reference to paper:')
 st.write('[Costers et al. "Does including the full CVLT-II and BVMT-R improve BICAMS? '
          'Evidence from a Belgian (Dutch) validation study." Multiple Sclerosis and Related Disorders 18 (2017):'
