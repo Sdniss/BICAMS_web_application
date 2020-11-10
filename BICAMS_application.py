@@ -15,12 +15,7 @@ cvlt_conv_table = ConversionTable().cvlt
 sex_dict = {1: 'male',
             2: 'female'}
 
-edu_dict = {'6 - primary school': 'primary school',
-            '12 - high school': 'high school',
-            '13 - professional education': 'professional education',
-            '15 - bachelor': 'bachelor',
-            '17 - master': 'master',
-            '21 - doctorate': 'doctorate'}
+edu_options = ['6 - primary school', '12 - high school', '13 - professional education', '15 - bachelor', '17 - master', '21 - doctorate'}
 
 # First print section on main page
 st.title('How to compare cognitive scores in MS')
@@ -59,8 +54,8 @@ sex = st.sidebar.selectbox(
 
 edu = st.sidebar.selectbox(
     label = 'Define educational level (years)',
-    options = list(edu_dict.keys()))
-edu_int = int(edu.split(' - ')[0]) # Only get the amount of years from the options list
+    options = edu_options)
+edu_int = int(edu.split(' - ')[0]) # Only get the amount of years from the education string
 
 sdmt = st.sidebar.slider(
     min_value=0,
@@ -81,7 +76,7 @@ cvlt = st.sidebar.slider(
 subject_dict = {'Age': age,
                 'Age^2': age**2,
                 'Gender': sex_dict.get(sex),
-                'Education': edu_dict.get(edu),
+                'Education': edu.split(' - ') [1], # Get the degree from the education string
                 'SDMT': sdmt,
                 'BVMT': bvmt,
                 'CVLT': cvlt}
