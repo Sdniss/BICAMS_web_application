@@ -3,3 +3,6 @@ pandas
 matplotlib
 seaborn
 streamlit
+xlrd
+openpyxl
+xlsxwriter

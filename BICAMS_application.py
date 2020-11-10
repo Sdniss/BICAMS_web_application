@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from load_data import ConversionTable
 from load_data import ReferenceData
-from functions import normalization_pipeline
+from functions import normalization_pipeline, get_table_download_link
 
 # Load the conversion tables
 sdmt_conv_table = ConversionTable().sdmt
@@ -168,9 +168,105 @@ st.write('The values shown in the curve are **normalized** values, z-scores. The
          'If they both score 50 on sdmt, the woman will have a lower z-score, since we *expect* her score to be high based on her **Age**, **Gender** and **Education**. '
          'Now, we can study the true impact of Multiple Sclerosis on the cognitive performance of the subject.')
 
-# File upload section
+# File upload and conversion section
 st.markdown('***')
-file = st.file_uploader("Upload a file", type=("csv"))
+st.header('Convert your own data!')
+st.subheader('Step 1: Prepare your data')
+st.write('**Column headers**: age, sex, education, sdmt, bvmt, cvlt')
+st.write('- *age* column: years (integer)')
+st.write('- *sex* column: 1 = Male, 2 = Female (integer)')
+st.write('- *education* column: years of education (integer), choose from 6, 12, 13, 15, 17, 21. '
+         'Check the option list in the sidebar ("Define education level") for the corresponding degrees.')
+st.write('- *sdmt/bvmt/cvlt*: raw score on the test (integer)')
+st.write('**Note 1**: please use exactly these column names in this order')
+st.write('**Note 2**: only the 3 first columns are an absolute requirement. '
+         'For the cognitive scores, please prepare your dataframe to only contain columns for which you have data. '
+         'Hence, this can be a subset of the latter 3 columns, but should at least include one of them')
+
+st.subheader('Step 2: Define the z-score on which you want to declare cognitive impairment')
+z_cutoff = st.selectbox(label = 'Choose the z cutoff score',
+                        options = [-1.5, -1, -0.5, 0])
+
+st.subheader('Step 3: Upload your excel file')
+input_object = st.file_uploader("Browse for a file or drag and drop here:", type=("xlsx"))
+if input_object:
+    input_data = pd.read_excel(input_object)
+    age_2 = input_data['age'] ** 2
+    input_data.insert(loc=1, column='age^2', value=age_2)  # insert age^2 column in second position (thus loc = 1)
+else:
+    input_data = pd.DataFrame()
+
+# Table Conversion
+if input_data.empty == False:
+
+    # Print preview of the data
+    st.write('Your input data (first 5 rows):')
+    st.write(input_data)
+
+    # Load the data (either mock data or your data)
+    demographics = input_data[['age', 'age^2', 'sex', 'education']]
+    cognitive_raw = input_data.drop(['age', 'age^2', 'sex', 'education'], axis=1)
+
+    # Load the conversion tables
+    conversion_table_dict = {'sdmt': ConversionTable().sdmt,
+                             'bvmt': ConversionTable().bvmt,
+                             'cvlt': ConversionTable().cvlt}
+
+    # region Calculate all z-scores and binary scores (impaired / preserved) for all tests and all subjects
+    # General initiations
+    transform_matrix = []
+
+    for subject in range(input_data.shape[0]):
+
+        # Initiations per subject
+        z_row = []
+        imp_row = []
+
+        for test in cognitive_raw.columns:
+
+            # Extract raw data from dataframe
+            raw_scores = cognitive_raw[test]
+
+            # Get correct conversion table
+            conv_table = conversion_table_dict.get(test)
+
+            # Calculate z-score and whether it is impaired or not for the test and subject
+            z_score, imp_bool = normalization_pipeline(data_vector = demographics.iloc[subject],
+                                                       raw_score= raw_scores.iloc[subject],
+                                                       test = test,
+                                                       conversion_table= conv_table,
+                                                       z_cutoff= z_cutoff)
+
+            # Append lists
+            z_row.append(z_score)
+            imp_row.append(imp_bool)
+
+        # Append to general matrix
+        transform_matrix.append(z_row + imp_row)
+
+    # endregion
+
+    # region Put in matrix
+    # Define new columnnames for dataframe
+    z_score_columns = [element + '_z' for element in cognitive_raw.columns]
+    imp_columns = [element + '_imp' for element in cognitive_raw.columns]
+    new_columns = z_score_columns + imp_columns
+
+    # Convert matrix to pandas dataframe
+    transform_matrix = pd.DataFrame(data=transform_matrix,
+                                    columns=new_columns)
+    # endregion
+
+    # Concatenate original data with the z-scores and impairment boolean columns
+    transformed_data = pd.concat([input_data, transform_matrix], axis = 1)
+
+st.subheader('Step 4: Download your file, enriched with new information!')
+if input_data.empty == False:
+    st.write('A little sneak peak:')
+    st.write(transformed_data.head())
+    st.write('Fetch your file below! It is a csv file, which you can open with excel.')
+    st.markdown(get_table_download_link(transformed_data), unsafe_allow_html=True)
+    st.write('In the "imp" columns, 0 denotes preserved, 1 denotes impaired')
 st.markdown('***')
 
 # Paper reference

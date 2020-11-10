@@ -1,4 +1,7 @@
 import numpy as np
+import pandas as pd
+import base64
+from io import BytesIO
 
 
 def normalization_pipeline(data_vector, raw_score, test, conversion_table, z_cutoff):
@@ -73,6 +76,7 @@ def to_z_score(scaled_score, expected_score, test):
 
     return z_score
 
+
 def impaired_or_not(z_score, cutoff):
     """ Dichotimize z-score by applying a cutoff
 
@@ -84,3 +88,24 @@ def impaired_or_not(z_score, cutoff):
         return 1
     else:
         return 0
+
+
+# source to_excel and get_table_download_link: https://discuss.streamlit.io/t/how-to-download-file-in-streamlit/1806/2
+def to_excel(df):
+    output = BytesIO()
+    writer = pd.ExcelWriter(output, engine='xlsxwriter')
+    df.to_excel(writer, sheet_name='Sheet1')
+    writer.save()
+    processed_data = output.getvalue()
+    return processed_data
+
+
+def get_table_download_link(df):
+    """Generates a link allowing the data in a given panda dataframe to be downloaded
+    in:  dataframe
+    out: href string
+    """
+    val = to_excel(df)
+    b64 = base64.b64encode(val)  # val looks like b'...'
+    return f'<a href="data:application/octet-stream;base64,{b64.decode()}" ' \
+           f'download="transformed_data.xlsx">Download excel file</a>'  # decode b'abc' => abc
