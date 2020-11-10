@@ -264,7 +264,7 @@ st.subheader('Step 4: Download your file, enriched with new information!')
 if input_data.empty == False:
     st.write('A little sneak peak:')
     st.write(transformed_data.head())
-    st.write('Fetch your file below! It is a csv file, which you can open with excel.')
+    st.write('Fetch your excel file below!')
     st.markdown(get_table_download_link(transformed_data), unsafe_allow_html=True)
     st.write('In the "imp" columns, 0 denotes preserved, 1 denotes impaired')
 st.markdown('***')
