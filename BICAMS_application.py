@@ -18,6 +18,7 @@ sex_dict = {1: 'male',
 edu_options = ['6 - primary school', '12 - high school', '13 - professional education', '15 - bachelor', '17 - master', '21 - doctorate']
 
 # First print section on main page
+st.image('VUB-AIMS-RGB.png', use_column_width=True)
 st.title('How to compare cognitive scores in MS')
 st.write("Learn here about a useful trick that allows to assess the true impact that Multiple Sclerosis has on people's cognitive performance: **transformation to z-scores**")
 st.write('This work is based on the paper by [Costers et al. 2017](https://doi.org/10.1016/j.msard.2017.08.018)')
@@ -306,3 +307,18 @@ st.subheader('Reference to paper:')
 st.write('[Costers et al. "Does including the full CVLT-II and BVMT-R improve BICAMS? '
          'Evidence from a Belgian (Dutch) validation study." Multiple Sclerosis and Related Disorders 18 (2017):'
          ' 33-40.](https://doi.org/10.1016/j.msard.2017.08.018)')
+st.markdown('***')
+
+# Contact details of author
+st.subheader('About the author')
+st.image('Stijn_Violin.jpg', width=150)
+st.write('Hello there!:wave: My name is Stijn Denissen, and I am a PhD student of the '
+         '[AIMS lab @ VUB](https://aims.research.vub.be/), studying the interplay between '
+         'artificial Intelligence and neuroscience, applied to Multiple Sclerosis. I am highly enthousiastic '
+         'about making science accessible to anyone interested.')
+st.write('This project aims to provide insight in studying cognitive performance in MS, '
+         'one of the research interests of the [AIMS lab](https://aims.research.vub.be/). '
+         'Furthermore, it offers a quick tool to standardize cognitive scores, as an additional effort '
+         'to the [paper](https://doi.org/10.1016/j.msard.2017.08.018) of Lars Costers, '
+         'a fellow PhD student at the AIMS lab.')
+st.write('I am happy to get in touch! Just send a mail to <stijn.denissen@vub.be> :wink:')
