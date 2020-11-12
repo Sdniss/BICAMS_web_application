@@ -11,10 +11,8 @@ sdmt_conv_table = ConversionTable().sdmt
 bvmt_conv_table = ConversionTable().bvmt
 cvlt_conv_table = ConversionTable().cvlt
 
-# Couple certain values with strings
-sex_dict = {1: 'male',
-            2: 'female'}
-
+# Initiate some options
+sex_options = ['1 - Male', '2 - Female']
 edu_options = ['6 - primary school', '12 - high school', '13 - professional education', '15 - bachelor', '17 - master', '21 - doctorate']
 
 # First print section on main page
@@ -51,7 +49,7 @@ age = st.sidebar.slider(
 
 sex = st.sidebar.selectbox(
     label = 'Define sex',
-    options = ['1 - Male', '2 - Female'])
+    options = sex_options)
 sex = int(sex.split(' - ')[0])
 
 edu = st.sidebar.selectbox(
@@ -77,8 +75,8 @@ cvlt = st.sidebar.slider(
 # Create table
 subject_dict = {'Age': age,
                 'Age^2': age**2,
-                'Gender': sex_dict.get(sex),
-                'Education': edu.split(' - ') [1], # Get the degree from the education string
+                'Gender': sex.split(' - ')[1],
+                'Education': edu.split(' - ')[1], # Get the degree from the education string
                 'SDMT': sdmt,
                 'BVMT': bvmt,
                 'CVLT': cvlt}
