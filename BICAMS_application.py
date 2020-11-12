@@ -50,7 +50,7 @@ age = st.sidebar.slider(
 sex = st.sidebar.selectbox(
     label = 'Define sex',
     options = sex_options)
-sex = int(sex.split(' - ')[0])
+sex_int = int(sex.split(' - ')[0])
 
 edu = st.sidebar.selectbox(
     label = 'Define educational level (years)',
@@ -75,7 +75,7 @@ cvlt = st.sidebar.slider(
 # Create table
 subject_dict = {'Age': age,
                 'Age^2': age**2,
-                'Gender': sex.split(' - ')[1],
+                'Gender': sex.split(' - ')[1], # Get gender from the string
                 'Education': edu.split(' - ')[1], # Get the degree from the education string
                 'SDMT': sdmt,
                 'BVMT': bvmt,
@@ -105,7 +105,7 @@ for test, test_str, conv_table, colour,label_pos in zip([sdmt, bvmt, cvlt],
                                                         ['blue', 'black','purple'],
                                                         [1,2,3]):
 
-            z_score, imp_bool = normalization_pipeline(data_vector = [age, age**2, sex, edu_int],
+            z_score, imp_bool = normalization_pipeline(data_vector = [age, age**2, sex_int, edu_int],
                                                raw_score= test,
                                                test = test_str,
                                                conversion_table= conv_table,
