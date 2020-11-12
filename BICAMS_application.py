@@ -23,6 +23,7 @@ st.write('This work is based on the paper by [Costers et al. 2017](https://doi.o
 st.write('**Do you want to convert your own data to z-scores? Scroll down for more details!**')
 st.markdown('***')
 st.title('Part 1: Illustration of z normalization')
+st.markdown('***')
 st.header('Background Information')
 st.write('Some essential concepts to make sure you optimally benefit from this application:')
 st.write('The Brief International Cognitive Assessment for Multiple Sclerosis ([**BICAMS**](https://bmcneurol.biomedcentral.com/articles/10.1186/1471-2377-12-55)) is a test battery that screens for cognitive problems in MS. It consists of the following tests:')
@@ -167,6 +168,7 @@ st.write('The values shown in the curve are **normalized** values, z-scores. The
 # File upload and conversion section
 st.markdown('***')
 st.title('Part 2: Convert your own data!')
+st.markdown('***')
 st.header('Step 1: Prepare your data')
 st.write('This is what your data should look like:')
 st.write(pd.read_excel("data/mock_data.xlsx").head())
