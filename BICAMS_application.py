@@ -324,3 +324,4 @@ st.write('This project aims to provide insight in studying cognitive performance
          'to the [paper](https://doi.org/10.1016/j.msard.2017.08.018) of Lars Costers, '
          'a fellow PhD student at the AIMS lab.')
 st.write('I am happy to get in touch! Just send a mail to <stijn.denissen@vub.be> :wink:')
+st.markdown('[twitter](https://twitter.com/denissenstijn) - [LinkedIn](https://www.linkedin.com/in/stijndenissen/) - [github](https://github.com/Sdniss)')
