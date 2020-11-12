@@ -50,8 +50,9 @@ age = st.sidebar.slider(
     label = 'Define age (years)')
 
 sex = st.sidebar.selectbox(
-    label = 'Define sex (1: Male, 2: Female)',
-    options = [1,2])
+    label = 'Define sex',
+    options = ['1 - Male', '2 - Female'])
+sex = int(sex.split(' - ')[0])
 
 edu = st.sidebar.selectbox(
     label = 'Define educational level (years)',
