@@ -22,6 +22,7 @@ st.write("Learn here about a useful trick that allows to assess the true impact 
 st.write('This work is based on the paper by [Costers et al. 2017](https://doi.org/10.1016/j.msard.2017.08.018)')
 st.write('**Do you want to convert your own data to z-scores? Scroll down for more details!**')
 st.markdown('***')
+st.title('Part 1: Illustration of z normalization')
 st.header('Background Information')
 st.write('Some essential concepts to make sure you optimally benefit from this application:')
 st.write('The Brief International Cognitive Assessment for Multiple Sclerosis ([**BICAMS**](https://bmcneurol.biomedcentral.com/articles/10.1186/1471-2377-12-55)) is a test battery that screens for cognitive problems in MS. It consists of the following tests:')
@@ -165,8 +166,8 @@ st.write('The values shown in the curve are **normalized** values, z-scores. The
 
 # File upload and conversion section
 st.markdown('***')
-st.header('Convert your own data!')
-st.subheader('Step 1: Prepare your data')
+st.title('Part 2: Convert your own data!')
+st.header('Step 1: Prepare your data')
 st.write('This is what your data should look like:')
 st.write(pd.read_excel("data/mock_data.xlsx").head())
 st.write('- *age* column: years (integer)')
@@ -179,11 +180,11 @@ st.write('**Note 2**: only the 3 first columns are an absolute requirement. '
          'For the cognitive scores, please prepare your dataframe to only contain columns for which you have data. '
          'Hence, this can be a subset of the latter 3 columns, but should at least include one of them')
 
-st.subheader('Step 2: Define the z-score on which you want to declare cognitive impairment')
+st.header('Step 2: Define the z-score on which you want to declare cognitive impairment')
 z_cutoff = st.selectbox(label = 'Choose the z cutoff score',
                         options = [-1.5, -1, -0.5, 0])
 
-st.subheader('Step 3: Upload your excel file')
+st.header('Step 3: Upload your excel file')
 input_object = st.file_uploader("Browse for a file or drag and drop here:", type=("xlsx"))
 if input_object:
     input_data = pd.read_excel(input_object)
@@ -288,7 +289,7 @@ if input_data.empty == False:
     # Concatenate original data with the z-scores and impairment boolean columns
     transformed_data = pd.concat([input_data, transform_matrix], axis = 1)
 
-st.subheader('Step 4: Download your file, enriched with new information!')
+st.header('Step 4: Download your file, enriched with new information!')
 if input_data.empty == False:
     st.write('A little sneak peak:')
     st.write(transformed_data.head())
