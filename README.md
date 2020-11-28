@@ -1,4 +1,4 @@
-# BICAMS normalization visualization
+# BICAMS normalization visualization [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/sdniss/bicams_web_application/BICAMS_application.py)
 
 ## Application location
 Surf 🌊 🏄🏽‍ to the [Streamlit Application](https://share.streamlit.io/sdniss/bicams_web_application/BICAMS_application.py) and try it out for yourself!
